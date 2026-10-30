@@ -93,3 +93,9 @@ The goal is to develop metrics and analytics that help practitioners understand 
 - What requires engineering attention, and why?
 - What evidence supports the priorities?
 - How can these findings inform detection planning and strategy?
+
+## License
+
+Research documentation is licensed under CC BY 4.0. Reusable templates and software are licensed under MIT.
+
+See [Licensing](LICENSE.md) for details.
