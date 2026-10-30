@@ -1,0 +1,220 @@
+# Detection Attributes
+# Project: Detection Engineering Security Analytics
+# Status: Draft v0.3
+#
+# Purpose:
+# Proposed template for recording structured information about an individual detection, including attributes, practitioner context, and supporting evidence.
+# The information may support future assessment models, visibility metrics, and security analytics without duplicating derived results.
+
+schema_version: "0.3"
+
+# -----------------------------------------------------------------------------
+# Record
+# Keep the detection identifiable and traceable as the record changes over time.
+# -----------------------------------------------------------------------------
+record:
+  detection_id: ""
+  title: ""
+  lifecycle_status: ""        # planned | testing | active | disabled | retired
+  created_on: null            # YYYY-MM-DD
+  last_updated: null          # YYYY-MM-DD
+  change_notes: ""
+
+# -----------------------------------------------------------------------------
+# Definition
+# Practitioner prompt: What is this detection intended to identify, and why
+# does it exist?
+# -----------------------------------------------------------------------------
+definition:
+  description: ""
+  detection_type: ""          # rule | correlation | anomaly | behavioral | other
+  behavior: ""
+  security_objective: ""
+  expected_signal: ""
+  threat_relevance: ""
+
+  detection_platform: ""      # SIEM / analytics platform
+  rule_language: ""           # SPL, KQL, Sigma, etc.
+  rule_reference: ""          # path, URL, or repository reference
+
+  analytic_story_refs: []
+
+  attack_mapping:
+    - technique_id: ""
+      subtechnique_id: ""
+      rationale: ""
+
+  tags: []
+
+# -----------------------------------------------------------------------------
+# Context
+# Practitioner prompt: Where should this detection apply, and what assumptions
+# or boundaries shape its intended use?
+# -----------------------------------------------------------------------------
+context:
+  environments: []
+  platforms: []
+  asset_scope: []
+  identity_scope: []
+
+  assumptions: []
+  exclusions: []
+
+  security_context: ""
+  scope_notes: ""
+
+# -----------------------------------------------------------------------------
+# Telemetry
+# Practitioner prompt: What data does this detection depend on, and is that
+# data sufficient and reliable for the intended analytic?
+# -----------------------------------------------------------------------------
+telemetry:
+  sources:
+    - source_id: ""
+      source_name: ""
+      required: true
+      notes: ""
+
+  required_fields: []
+  optional_fields: []
+
+  normalization:
+    required: false
+    method: ""
+    notes: ""
+
+  data_quality_notes: []
+  known_gaps: []
+  evidence_refs: []
+  practitioner_notes: ""
+
+# -----------------------------------------------------------------------------
+# Dependencies
+# Practitioner prompt: What supporting components or services must remain
+# available or reliable for this detection to work as intended?
+# -----------------------------------------------------------------------------
+dependencies:
+  - dependency_id: ""
+    dependency_type: ""       # telemetry | lookup | enrichment | parser | schema | control | platform | other
+    name: ""
+    required: true
+    owner_or_source: ""
+    notes: ""
+
+# -----------------------------------------------------------------------------
+# Logic
+# Practitioner prompt: How does the detection identify the behavior, and what
+# assumptions, filters, or limitations affect the analytic?
+# -----------------------------------------------------------------------------
+logic:
+  analytic_method: ""
+  summary: ""
+
+  conditions: []
+  thresholds: []
+  time_window: ""
+
+  joins: []
+  lookups: []
+  enrichments: []
+
+  filters: []
+  suppressions: []
+
+  analytic_assumptions: []
+  known_limitations: []
+  edge_cases: []
+
+  evidence_refs: []
+  practitioner_notes: ""
+
+# -----------------------------------------------------------------------------
+# Validation
+# Practitioner prompt: What evidence shows that this detection works as
+# intended against representative behavior?
+# -----------------------------------------------------------------------------
+validation:
+  state: ""                   # not_tested | partial | current | stale | insufficient_evidence
+  last_validated: null        # YYYY-MM-DD
+
+  methods: []                 # replay | simulation | unit_test | adversary_emulation | manual_review
+  test_case_refs: []
+
+  positive_test_refs: []
+  negative_test_refs: []
+
+  representative_data: null   # true | false | null
+  regression_tested: null     # true | false | null
+
+  evidence_refs: []
+  practitioner_notes: ""
+
+# -----------------------------------------------------------------------------
+# Actionability
+# Practitioner prompt: When this detection fires, does the alert provide enough
+# context for an analyst to understand, investigate, and act?
+# -----------------------------------------------------------------------------
+actionability:
+  expected_context: []
+  available_context: []
+
+  analyst_guidance_ref: ""
+  triage_notes: ""
+
+  known_noise: []
+  known_false_positive_patterns: []
+
+  escalation_context: ""
+
+  evidence_refs: []
+  practitioner_notes: ""
+
+# -----------------------------------------------------------------------------
+# Observability
+# Practitioner prompt: Can the team tell whether this detection is running and
+# producing expected operational signals over time?
+# -----------------------------------------------------------------------------
+observability:
+  deployment_state: ""        # not_deployed | testing | active | disabled
+
+  alert_destination: ""
+  last_observed_alert: null   # YYYY-MM-DD or timestamp if tracked
+
+  operational_observations: []
+
+  dashboard_refs: []
+  evidence_refs: []
+  practitioner_notes: ""
+
+# -----------------------------------------------------------------------------
+# Maintenance
+# Practitioner prompt: What needs to be reviewed, monitored, or updated to keep
+# this detection useful as the environment changes?
+# -----------------------------------------------------------------------------
+maintenance:
+  owner_team: ""
+  maintainer: ""
+
+  review_cadence: ""
+  last_reviewed: null         # YYYY-MM-DD
+
+  reassessment_triggers:
+    - trigger_type: ""        # telemetry_change | schema_change | logic_change | platform_change | threat_change | other
+      condition: ""
+      related_dependency_refs: []
+
+  finding_refs: []
+  work_item_refs: []
+
+  maintenance_notes: ""
+
+# -----------------------------------------------------------------------------
+# References
+# Keep supporting evidence and related artifacts easy to trace without
+# duplicating their full contents in the detection record.
+# -----------------------------------------------------------------------------
+references:
+  - ref_id: ""
+    type: ""                  # query_result | test_result | dashboard | ticket | research | lab_output | other
+    location: ""
+    notes: ""
